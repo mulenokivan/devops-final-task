@@ -3,3 +3,6 @@
 /venv/
 /ve/
 /staticfiles
+/sampleapp/__pycache__
+/sampleapp/migrations/__pycache__
+/sampleproject/__pycache__
