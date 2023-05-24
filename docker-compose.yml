@@ -1,0 +1,33 @@
+services:
+  sampleapp:
+    restart: always
+    image: sampleapp:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    tty: true
+    environment:
+      PYTHONUNBUFFERED: 1
+    env_file:
+      - .env
+    command:
+      - python manage.py runserver 0.0.0.0:8000
+
+  migrate:
+    image: sampleapp:latest
+    profiles:
+      - migrate
+    tty: true
+    environment:
+      PYTHONUNBUFFERED: 1
+    env_file:
+      - .env
+    command:
+      - python manage.py migrate
+  db:
+    image: postgres
+    restart: always
+    env_file:
+      - .env

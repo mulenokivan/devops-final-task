@@ -6,3 +6,4 @@
 /sampleapp/__pycache__
 /sampleapp/migrations/__pycache__
 /sampleproject/__pycache__
+/.env

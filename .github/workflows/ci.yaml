@@ -31,6 +31,10 @@ jobs:
           push: ${{ (github.ref_name == 'main') && 'true' || 'false'}}
           tags: ${{ env.IMAGE }}:${{ env.TAG }}
 
+      - name: Check images
+        run: |
+          docker images
+
       - name: Tests
         run: |
-          docker run --rm ${{ env.IMAGE }}:${{ env.TAG }} test
+          docker run --rm ${{ env.IMAGE }}:${{ env.TAG }} python manage.py test
