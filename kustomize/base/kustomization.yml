@@ -6,5 +6,5 @@ resources:
   - secret.yml
 
 images:
-  - name: elponcho/sampleapp
-    newTag: v1.2.0
+  - name: mulenokv/sampleapp
+    newTag: main
