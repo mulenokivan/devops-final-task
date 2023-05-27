@@ -56,7 +56,7 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       run: |
         cd kustomize/base
-        kustomize edit set image sample-app=$DOCKER_USERNAME/sample-app:$GITHUB_SHA
+        kustomize edit set image sample-app=$DOCKER_USERNAME/sampleapp:$GITHUB_SHA
         cat kustomization.yml
 
     - name: Update Kubernetes overlays resources
@@ -64,7 +64,7 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       run: |
         cd kustomize/overlays/common
-        kustomize edit set image sample-app=$DOCKER_USERNAME/sample-app:$GITHUB_SHA
+        kustomize edit set image sample-app=$DOCKER_USERNAME/sampleapp:$GITHUB_SHA
         cat kustomization.yml
 
     - name: Commit files
