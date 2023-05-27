@@ -3,14 +3,11 @@ kind: Kustomization
 
 namespace: mulenokv-namespace
 images:
-- name: nginx
-  newName: nginx
-  newTag: 1.23.2-alpine
-- name: sample-app
-  newName: mulenokv/sampleapp
-  newTag: 432023d3dfe3dcce316679555af0f3fe3704f150
-- name: sampleapp
-  newTag: main
+  - name: nginx
+    newName: nginx
+    newTag: 1.23.2-alpine
+  - name: mulenokv/sampleapp
+    newTag: main
 
 resources:
 - ../../base
