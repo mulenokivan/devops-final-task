@@ -7,27 +7,29 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8000:8000
-    tty: true
-    environment:
-      PYTHONUNBUFFERED: 1
     env_file:
       - .env
-    command:
-      - python manage.py runserver 0.0.0.0:8000
+    command: ["gunicorn", "--bind", "0.0.0.0:8000", "sampleproject.wsgi"]
+    depends_on:
+    - db
 
   migrate:
     image: sampleapp:latest
     profiles:
       - migrate
-    tty: true
-    environment:
-      PYTHONUNBUFFERED: 1
     env_file:
       - .env
-    command:
-      - python manage.py migrate
+    command: ["python", "manage.py", "migrate"]
+    depends_on:
+    - db
+
   db:
-    image: postgres
+    image: postgres:15.2
     restart: always
     env_file:
       - .env
+    volumes:
+      - database:/var/lib/postgresql/data
+
+volumes:
+  database:

@@ -1,17 +1,15 @@
-FROM python:3.9-alpine
+FROM python:3.9-slim
 
-RUN python -m pip install --upgrade pip
-RUN pip install poetry
-RUN apk add -U --no-cache \
-  postgresql-dev \
-  libc-dev
+ENV PYTHONUNBUFFERED=1
+
+RUN apt-get update && apt-get install -y \
+    --no-install-recommends gcc \
+    python3.9-dev \
+    libpq-dev
 
 WORKDIR /opt/app
-
 COPY . .
-RUN poetry install
-RUN chmod u+x entrypoint.sh
+
+RUN pip install -r requirements.txt
 
 EXPOSE 8000
-
-ENTRYPOINT ["./entrypoint.sh"]
