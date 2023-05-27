@@ -6,8 +6,8 @@ resources:
 - secret.yml
 images:
 - name: sample-app
-  newName: mulenokv/sample-app
-  newTag: 6203ca1147c69bac0031a31f657ea4107155fa48
+  newName: mulenokv/sampleapp
+  newTag: 432023d3dfe3dcce316679555af0f3fe3704f150
 - name: sampleapp
   newTag: main
 apiVersion: kustomize.config.k8s.io/v1beta1
