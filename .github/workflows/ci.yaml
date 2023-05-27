@@ -44,7 +44,7 @@ jobs:
 
     steps:
     - name: Check out code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Setup Kustomize
       uses: imranismail/setup-kustomize@v1
@@ -59,7 +59,7 @@ jobs:
         kustomize edit set image sample-app=$DOCKER_USERNAME/sample-app:$GITHUB_SHA
         cat kustomization.yml
 
-    - name: Update Kubernetes base resources
+    - name: Update Kubernetes overlays resources
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       run: |
@@ -77,3 +77,4 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
