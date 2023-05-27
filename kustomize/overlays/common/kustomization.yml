@@ -10,7 +10,7 @@ images:
   newTag: 1.23.2-alpine
 - name: sample-app
   newName: mulenokv/sampleapp
-  newTag: cd7a07985f82667df71efce39bbe6708048de8f0
+  newTag: aa9908fd8de072f1bf9aa27d99c87b57c34f9634
 
 resources:
 - ../../base
