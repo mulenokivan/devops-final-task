@@ -51,12 +51,20 @@ jobs:
       with:
         kustomize-version: "5.0.1"
 
-    - name: Update Kubernetes resources
+    - name: Update Kubernetes base resources
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       run: |
-        cd infra
-        kustomize edit set image argo-app=$DOCKER_USERNAME/sample-app:$GITHUB_SHA
+        cd kustomize/base
+        kustomize edit set image sample-app=$DOCKER_USERNAME/sample-app:$GITHUB_SHA
+        cat kustomization.yml
+
+    - name: Update Kubernetes base resources
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      run: |
+        cd kustomize/overlays/common
+        kustomize edit set image sample-app=$DOCKER_USERNAME/sample-app:$GITHUB_SHA
         cat kustomization.yml
 
     - name: Commit files

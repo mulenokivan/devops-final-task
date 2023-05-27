@@ -6,5 +6,5 @@ resources:
   - secret.yml
 
 images:
-  - name: mulenokv/sampleapp
+  - name: sampleapp
     newTag: main
