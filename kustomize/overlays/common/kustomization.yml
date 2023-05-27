@@ -5,7 +5,7 @@ namespace: mulenokv-namespace
 images:
 - name: mulenokv/sampleapp
   newName: mulenokv/sampleapp
-  newTag: 301c8405166a114f9a070dc2f7183f47d72836ba
+  newTag: 382a9ba805d46deea3fbc84cafad43a3773b79fa
 - name: nginx
   newName: nginx
   newTag: 1.23.2-alpine
