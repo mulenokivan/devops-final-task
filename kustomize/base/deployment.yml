@@ -14,7 +14,7 @@ spec:
     spec:
       initContainers:
         - name: sampleapp-migrate
-          image: elponcho/sampleapp:main
+          image: mulenokv/sampleapp:main
           command: ["python", "manage.py", "migrate"]
           ports:
             - containerPort: 8000
