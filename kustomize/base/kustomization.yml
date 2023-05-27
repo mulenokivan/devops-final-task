@@ -4,7 +4,7 @@ kind: Kustomization
 images:
 - name: mulenokv/sampleapp
   newName: mulenokv/sampleapp
-  newTag: 4969e222e31780d841125c7a216acbbde01fabce
+  newTag: b457cc1cba7866c44722fb98641850a26de50256
 
 resources:
 - deployment.yml
